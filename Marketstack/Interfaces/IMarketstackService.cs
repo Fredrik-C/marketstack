@@ -11,6 +11,6 @@ namespace Marketstack.Interfaces
         Task<List<Exchange>> GetExchanges();
         Task<List<Stock>> GetExchangeStocks(string exchangeMic);
         Task<List<StockBar>> GetStockEodBars(string stockSymbol, DateTime fromDate, DateTime toDate);
-        Task<List<StockBar>> GetStockIntraDayBars(string stockSymbol, DateTime fromDate, DateTime toDate);
+        Task<List<StockBar>> GetStockIntraDayBars(string stockSymbol, DateTime fromDate, DateTime toDate, string interval = "1hour");
     }
 }

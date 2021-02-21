@@ -60,11 +60,11 @@ namespace Marketstack.Services
             string dateToStr = toDate.ToString("yyyy-MM-dd");
             return _httpClient.GetAsync<StockBar>($"{_apiUrl}/eod?symbols={stockSymbol}&date_from={dateFromStr}&date_to={dateToStr}", _options.ApiToken, _throttled);
         }
-        public Task<List<StockBar>> GetStockIntraDayBars(string stockSymbol, DateTime fromDate, DateTime toDate)
+        public Task<List<StockBar>> GetStockIntraDayBars(string stockSymbol, DateTime fromDate, DateTime toDate, string interval = "1hour")
         {
             string dateFromStr = fromDate.ToString("yyyy-MM-dd HH:mm:ss");
             string dateToStr = toDate.ToString("yyyy-MM-dd HH:mm:ss");
-            return _httpClient.GetAsync<StockBar>($"{_apiUrl}/intraday?symbols={stockSymbol}&date_from={dateFromStr}&date_to={dateToStr}", _options.ApiToken, _throttled);
+            return _httpClient.GetAsync<StockBar>($"{_apiUrl}/intraday?symbols={stockSymbol}&interval={interval}&date_from={dateFromStr}&date_to={dateToStr}", _options.ApiToken, _throttled);
         }
     }
 }
