@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Marketstack.Entities.Enums;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Xunit;
 
@@ -75,9 +76,10 @@ namespace Marketstack.Tests
         }
 
         [Theory]
-        [InlineData("15min", 23)]
-        [InlineData("30min", 11)]
-        public async Task GetStockIntraydayBars_WithInterval_ReturnsBars(string interval, int expected)
+        [InlineData(Interval._15min, 23)]
+        [InlineData(Interval._30min, 11)]
+        [InlineData(Interval._3hour, 2)]
+        public async Task GetStockIntraydayBars_WithInterval_ReturnsBars(Interval interval, int expected)
         {
             var appleSymbol = "AAPL";
             var fromDate = DateTime.Parse("2021-02-01");
